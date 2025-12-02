@@ -5,6 +5,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import userRoute from './routes/authRoutes.js';
 import projectTopicRoutes from './routes/projectTopicRoutes.js';
+import proposalRoutes from './routes/proposalRoutes.js'; // Changed from 'router'
 
 dotenv.config();
 
@@ -23,6 +24,7 @@ app.get('/api/health', (req, res) => {
 // ROUTES
 app.use('/api/auth', userRoute);
 app.use('/api/topics', projectTopicRoutes);
+app.use('/api/proposals', proposalRoutes); // Use default import
 
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log("MongoDB connected"))
